@@ -14,4 +14,9 @@ class ActiveSupport::TestCase
 
   include ApplicationHelper
 
+  #如果用户已登录，返回true
+  def is_logged_in?
+     !session[:user_id].nil?
+  end
+
 end
