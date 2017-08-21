@@ -35,6 +35,9 @@ gem 'jquery-rails', '4.3.1'
 
 gem 'bootstrap-sass',          '3.3.7'
 gem 'bcrypt'
+gem 'faker'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 
 group :development, :test do
