@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
+  has_many :microposts, dependent: :destroy
 
   #返回指定字符串的哈希摘要
   def User.digest(string)
@@ -85,6 +86,12 @@ class User < ApplicationRecord
  # 如果密码重设请求超时了，返回 true
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  #实现动态流原型
+  #完整的实现参见第14章
+  def feed
+    Micropost.where("user_id = ?", id)
   end
 
   private
