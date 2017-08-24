@@ -2,7 +2,8 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+   include CarrierWave::MiniMagick
+   process resize_to_limit: [400, 400]
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -45,5 +46,10 @@ class PictureUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  #添加一个白名单，指定允许上传的图像类型
+  def extension_white_list
+    %w(jpg jpeg gif png)
+  end
 
 end
